@@ -13,6 +13,8 @@
 		44EBD0901E64E8C100E84ECE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EBD08F1E64E8C100E84ECE /* Assets.xcassets */; };
 		44EBD0931E64E8C100E84ECE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EBD0911E64E8C100E84ECE /* LaunchScreen.storyboard */; };
 		44EBD09E1E64E8C100E84ECE /* DanteToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EBD09D1E64E8C100E84ECE /* DanteToolkitTests.swift */; };
+		44EBD0AB1E64EA1D00E84ECE /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EBD0AA1E64EA1D00E84ECE /* Bill.swift */; };
+		44EBD0AD1E64EA7D00E84ECE /* SubCharge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EBD0AC1E64EA7D00E84ECE /* SubCharge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		44EBD0991E64E8C100E84ECE /* DanteToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanteToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EBD09D1E64E8C100E84ECE /* DanteToolkitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanteToolkitTests.swift; sourceTree = "<group>"; };
 		44EBD09F1E64E8C100E84ECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44EBD0AA1E64EA1D00E84ECE /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		44EBD0AC1E64EA7D00E84ECE /* SubCharge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCharge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +81,11 @@
 		44EBD0871E64E8C100E84ECE /* DanteToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				44EBD0881E64E8C100E84ECE /* AppDelegate.swift */,
+				44EBD0A91E64EA0200E84ECE /* Models */,
+				44EBD0A81E64E9E700E84ECE /* SupportFiles */,
 				44EBD08A1E64E8C100E84ECE /* ViewController.swift */,
 				44EBD08C1E64E8C100E84ECE /* Main.storyboard */,
-				44EBD08F1E64E8C100E84ECE /* Assets.xcassets */,
 				44EBD0911E64E8C100E84ECE /* LaunchScreen.storyboard */,
-				44EBD0941E64E8C100E84ECE /* Info.plist */,
 			);
 			path = DanteToolkit;
 			sourceTree = "<group>";
@@ -94,6 +97,25 @@
 				44EBD09F1E64E8C100E84ECE /* Info.plist */,
 			);
 			path = DanteToolkitTests;
+			sourceTree = "<group>";
+		};
+		44EBD0A81E64E9E700E84ECE /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				44EBD0881E64E8C100E84ECE /* AppDelegate.swift */,
+				44EBD08F1E64E8C100E84ECE /* Assets.xcassets */,
+				44EBD0941E64E8C100E84ECE /* Info.plist */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
+		44EBD0A91E64EA0200E84ECE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44EBD0AA1E64EA1D00E84ECE /* Bill.swift */,
+				44EBD0AC1E64EA7D00E84ECE /* SubCharge.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +224,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				44EBD08B1E64E8C100E84ECE /* ViewController.swift in Sources */,
+				44EBD0AB1E64EA1D00E84ECE /* Bill.swift in Sources */,
+				44EBD0AD1E64EA7D00E84ECE /* SubCharge.swift in Sources */,
 				44EBD0891E64E8C100E84ECE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
