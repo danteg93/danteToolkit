@@ -14,25 +14,24 @@ class SubCharge {
     var percentOfTotal: Double
     var nameOfCharge: String?
     
+    private let sigFigs = CalcSettings.sigFigs
+
     init(subAmount: Double, totalAmount: Double) {
         self.monetaryAmount = subAmount
         self.grandTotalAmount = totalAmount
-        self.percentOfTotal = (subAmount / totalAmount)
+        let unroundedPercent = (subAmount / totalAmount)
+        self.percentOfTotal = unroundedPercent.roundTo(sigFigs: sigFigs)
     }
     
     public func getPercent(significantFigures sigFig: Int) -> Double? {
-        if sigFig < 0 && sigFig > 4 {
-            return nil
-        }
-        let exponentialPower = pow(10.0, Double(sigFig))
-        return Double(round(exponentialPower*percentOfTotal)/exponentialPower)
+        return percentOfTotal
     }
     
     public func getMonetaryAmount() -> Double {
-        return Double(round(10000*monetaryAmount)/10000)
+        return monetaryAmount.roundTo(sigFigs: sigFigs)
     }
     
     public func printableAmount() -> String {
-        return String(Double(round(100*monetaryAmount)/100))
+        return String(monetaryAmount.roundTo(sigFigs: CalcSettings.printSigFigs))
     }
 }
