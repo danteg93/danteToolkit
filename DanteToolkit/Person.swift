@@ -9,8 +9,8 @@
 import Foundation
 
 class Person {
-    private var name: String
-    private var amountPaid: Double
+    public var name: String
+    public var amountPaid: Double
     
     init() {
         self.name = "Person"
@@ -26,13 +26,6 @@ class Person {
     }
     init(name: String, amountPaid: Double) {
         self.name = name
-        self.amountPaid = amountPaid
-    }
-    
-    public func set(name: String) {
-        self.name = name
-    }
-    public func set(amountPaid: Double) {
         self.amountPaid = amountPaid
     }
     
