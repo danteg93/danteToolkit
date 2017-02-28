@@ -31,12 +31,26 @@ class ViewController: UIViewController {
         let dante = Person(name: "Dante")
         let phong = Person(name: "Phong")
         let ashley = Person(name: "Ashley")
+        let people2 = [sally, dante, phong, ashley]
         let pasta = Item(name: "Pasta", price: 18.95)
         let steak = Item(name: "Steak", price: 19.95)
         let marsala = Item(name: "Marsala", price: 18.95)
-        let burger = Item(name: "Burger", price: 18.95)
+        let burger = Item(name: "Burger", price: 13.95)
         let cheeseCake = Item(name: "CheeseCake", price: 7.95).splitItem(parts: 2)
         let tiramisu = Item(name: "Tiramisu", price: 8.50).splitItem(parts: 2)
+        
+        sally.addItem(item: pasta)
+        sally.addItem(item: cheeseCake![0])
+        dante.addItem(item: burger)
+        dante.addItem(item: cheeseCake![1])
+        ashley.addItem(item: steak)
+        ashley.addItem(item: tiramisu![0])
+        phong.addItem(item: marsala)
+        phong.addItem(item: tiramisu![1])
+        
+        for person in people2 {
+            person.toString()
+        }
         
     
         let person1 = 18.95 + (7.95 / 2.0)
@@ -50,14 +64,6 @@ class ViewController: UIViewController {
         }
         bill.readBill()
         
-        let item1 = Item(name: "Cheese Cake", price: 7.95)
-        _ = item1.splitItem(parts: 2)
-        print("=========================================")
-        let item2 = Item(name: "Triple Layer Cake", price: 3.01)
-        _ = item2.splitItem(parts: 3)
-        print("=========================================")
-        let item3 = Item(name: "Double Layer Cake", price: 3.02)
-        _ = item3.splitItem(parts: 9)
     }
     
 

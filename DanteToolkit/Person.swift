@@ -41,4 +41,18 @@ class Person {
         return total.roundTo(sigFigs: CalcSettings.moneySigFigs)
     }
     
+    public func toString() {
+        print("===============")
+        print("Name: \(name)")
+        print("Items:")
+        if items.count <= 0 {
+            print("\tNo items")
+        } else {
+            for item in items {
+                print("\t\(item.toString())")
+            }
+        }
+        print("Total: \(calculateTotal())")
+        print("===============")
+    }
 }
