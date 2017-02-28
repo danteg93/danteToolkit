@@ -26,6 +26,15 @@ class ViewController: UIViewController {
         let tip = SubCharge(subAmount: 14.26, totalAmount: subTotal)
         let bill = Bill(subTotal: subTotal, tax: tax, tip: tip)
         
+        
+        let sally = Person(name: "Sally")
+        let dante = Person(name: "Dante")
+        let phong = Person(name: "Phong")
+        let ashley = Person(name: "Ashley")
+        let pasta = Item(name: "pasta", price: 18.95)
+        
+        
+        
         let person1 = 18.95 + (7.95 / 2.0)
         let person2 = 19.95 + (8.5 / 2.0)
         let person3 = 18.95 + (8.5 / 2.0)

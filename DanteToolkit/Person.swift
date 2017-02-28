@@ -30,7 +30,11 @@ class Person {
     }
     
     public func calculateTotal() -> Double {
-        return 0.0
+        var total = 0.0
+        for item in items {
+            total += item.price
+        }
+        return total.roundTo(sigFigs: CalcSettings.moneySigFigs)
     }
     
 }

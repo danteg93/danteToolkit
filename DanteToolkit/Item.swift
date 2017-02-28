@@ -17,6 +17,10 @@ class Item {
         self.price = price.roundTo(sigFigs: CalcSettings.moneySigFigs)
     }
     
+    public func getPrice() -> Double {
+        return price.roundTo(sigFigs: CalcSettings.moneySigFigs)
+    }
+    
     public func splitItem(parts: Int) -> [Item]? {
         if parts <= 1 {
             return nil
