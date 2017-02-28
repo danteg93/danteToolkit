@@ -12,28 +12,19 @@ class Person {
     private var name: String
     private var amountPaid: Double
     
-    init() {
-        self.name = "Person"
-        self.amountPaid = 0.0
-    }
-    init(name: String) {
-        self.name = name
-        self.amountPaid = 0.0
-    }
-    init(amountPaid: Double) {
-        self.name = "Person"
-        self.amountPaid = amountPaid
-    }
     init(name: String, amountPaid: Double) {
         self.name = name
         self.amountPaid = amountPaid
     }
     
-    public func set(name: String) {
-        self.name = name
+    public func getName() -> String {
+        return name
     }
-    public func set(amountPaid: Double) {
-        self.amountPaid = amountPaid
+    public func changeName(newName: String) {
+        self.name = newName
+    }
+    public func changeAmountPaid(newAmount: Double) {
+        self.amountPaid = newAmount
     }
     
 }

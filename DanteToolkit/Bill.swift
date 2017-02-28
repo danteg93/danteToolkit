@@ -46,7 +46,7 @@ class Bill {
     
     public func getGrandTotal() -> Double {
         let grandTotal = calculateSubChargesAmount() + tax.getMonetaryAmount() + tip.getMonetaryAmount()
-        return grandTotal.roundTo(sigFigs: CalcSettings.sigFigs)
+        return grandTotal.roundTo(sigFigs: CalcSettings.mathSigFigs)
     }
     
     public func readBill() {
@@ -61,7 +61,7 @@ class Bill {
             print("Tax Share: \(taxShare)")
             print("Tip Share: \(tipShare)")
             var grandTotalShare = sub.getMonetaryAmount() + taxShare + tipShare
-            grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.sigFigs)
+            grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.mathSigFigs)
             print("GrandTotal Share: \(grandTotalShare)")
             calculatedGT +=  grandTotalShare
             subChargeCount += 1
