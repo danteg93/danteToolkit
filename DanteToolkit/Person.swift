@@ -29,6 +29,10 @@ class Person {
         items.append(item)
     }
     
+    public func addItem(item: Item) {
+        items.append(item)
+    }
+    
     public func calculateTotal() -> Double {
         var total = 0.0
         for item in items {

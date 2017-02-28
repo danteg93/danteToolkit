@@ -31,10 +31,14 @@ class ViewController: UIViewController {
         let dante = Person(name: "Dante")
         let phong = Person(name: "Phong")
         let ashley = Person(name: "Ashley")
-        let pasta = Item(name: "pasta", price: 18.95)
+        let pasta = Item(name: "Pasta", price: 18.95)
+        let steak = Item(name: "Steak", price: 19.95)
+        let marsala = Item(name: "Marsala", price: 18.95)
+        let burger = Item(name: "Burger", price: 18.95)
+        let cheeseCake = Item(name: "CheeseCake", price: 7.95).splitItem(parts: 2)
+        let tiramisu = Item(name: "Tiramisu", price: 8.50).splitItem(parts: 2)
         
-        
-        
+    
         let person1 = 18.95 + (7.95 / 2.0)
         let person2 = 19.95 + (8.5 / 2.0)
         let person3 = 18.95 + (8.5 / 2.0)
