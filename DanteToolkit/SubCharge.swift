@@ -18,18 +18,23 @@ class SubCharge {
     private let printSigFigs = CalcSettings.printSigFigs
 
     init(subAmount: Double, totalAmount: Double) {
-        self.monetaryAmount = subAmount
+        self.monetaryAmount = subAmount.roundTo(sigFigs: sigFigs)
         self.grandTotalAmount = totalAmount
         let unroundedPercent = (subAmount / totalAmount)
         self.percentOfTotal = unroundedPercent.roundTo(sigFigs: sigFigs)
     }
     
     public func getPercent() -> Double {
-        return percentOfTotal
+        return percentOfTotal.roundTo(sigFigs: sigFigs)
     }
     
     public func printablePercent() -> String {
-        return String("\(percentOfTotal.roundTo(sigFigs: printSigFigs))%")
+        let expandedPercent = percentOfTotal * 100.0
+        return String("\(expandedPercent.roundTo(sigFigs: printSigFigs))%")
+    }
+    
+    public func calculateShare(percentage: Double) -> Double {
+        return monetaryAmount + (monetaryAmount * percentage)
     }
     
     public func getMonetaryAmount() -> Double {

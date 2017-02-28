@@ -58,11 +58,10 @@ class Bill {
             print("Amount: \(sub.printableTotalAmount())")
             let taxShare = sub.getMonetaryAmount() * tax.getPercent()
             let tipShare = sub.getMonetaryAmount() * tip.getPercent()
-            let taxSig = taxShare.roundTo(sigFigs: CalcSettings.sigFigs)
-            let tipSig = tipShare.roundTo(sigFigs: CalcSettings.sigFigs)
-            print("Tax Share: \(taxSig)")
-            print("Tip Share: \(tipSig)")
-            var grandTotalShare = sub.getMonetaryAmount() + taxSig + tipSig
+            print("Tax Share: \(taxShare)")
+            print("Tip Share: \(tipShare)")
+            var grandTotalShare = sub.getMonetaryAmount() + taxShare + tipShare
+            print("GrandTotal WTF: \(grandTotalShare)")
             grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.printSigFigs)
             print("GrandTotal Share: \(grandTotalShare)")
             calculatedGT +=  grandTotalShare
@@ -73,7 +72,8 @@ class Bill {
         print("Tax:        \(tax.printableTotalAmount()) (\(tax.printablePercent()))")
         print("Tip:        \(tip.printableTotalAmount()) (\(tip.printablePercent()))")
         print("GrandTotal: \(getGrandTotal())")
-        //print("Calculated Grand Total: \(calculatedGT)")
+        print("Calculated Grand Total: \(calculatedGT)")
+        print(22.20467.roundTo(sigFigs: 2))
         print("====================================")
     }
 }
