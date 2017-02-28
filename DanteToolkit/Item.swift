@@ -8,3 +8,18 @@
 
 import Foundation
 
+class Item {
+    public var name: String
+    public var price: Double
+    
+    init(name: String, price: Double) {
+        self.name = name
+        self.price = price.roundTo(sigFigs: CalcSettings.moneySigFigs)
+    }
+    
+    public func splitItem(parts: Int) {
+        let splitAmount = price / Double(parts)
+        
+    }
+    
+}

@@ -10,6 +10,6 @@ import Foundation
 
 struct CalcSettings {
     
-    public static let sigFigs = 4
-    public static let printSigFigs = 2
+    public static let mathSigFigs = 4
+    public static let moneySigFigs = 2
 }

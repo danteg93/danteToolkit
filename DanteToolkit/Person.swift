@@ -9,24 +9,22 @@
 import Foundation
 
 class Person {
-    public var name: String
-    public var amountPaid: Double
+    private var name: String
+    private var amountPaid: Double
     
-    init() {
-        self.name = "Person"
-        self.amountPaid = 0.0
-    }
-    init(name: String) {
-        self.name = name
-        self.amountPaid = 0.0
-    }
-    init(amountPaid: Double) {
-        self.name = "Person"
-        self.amountPaid = amountPaid
-    }
     init(name: String, amountPaid: Double) {
         self.name = name
         self.amountPaid = amountPaid
+    }
+    
+    public func getName() -> String {
+        return name
+    }
+    public func changeName(newName: String) {
+        self.name = newName
+    }
+    public func changeAmountPaid(newAmount: Double) {
+        self.amountPaid = newAmount
     }
     
 }
