@@ -10,21 +10,27 @@ import Foundation
 
 class Person {
     private var name: String
-    private var amountPaid: Double
+    private var items: [Item] = []
     
-    init(name: String, amountPaid: Double) {
+    init(name: String) {
         self.name = name
-        self.amountPaid = amountPaid
     }
     
     public func getName() -> String {
         return name
     }
+    
     public func changeName(newName: String) {
         self.name = newName
     }
-    public func changeAmountPaid(newAmount: Double) {
-        self.amountPaid = newAmount
+    
+    public func addItem(itemName: String, itemPrice: Double) {
+        let item = Item(name: itemName, price: itemPrice)
+        items.append(item)
+    }
+    
+    public func calculateTotal() -> Double {
+        return 0.0
     }
     
 }
