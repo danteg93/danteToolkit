@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     }
     
     private func lmfao() {
+        
         let subTotal = 88.25
         let tax = SubCharge(subAmount: 6.84, totalAmount: subTotal)
         let tip = SubCharge(subAmount: 14.26, totalAmount: subTotal)
@@ -31,7 +32,8 @@ class ViewController: UIViewController {
         let dante = Person(name: "Dante")
         let phong = Person(name: "Phong")
         let ashley = Person(name: "Ashley")
-        let people2 = [sally, dante, phong, ashley]
+        let people = [sally, dante, phong, ashley]
+        
         let pasta = Item(name: "Pasta", price: 18.95)
         let steak = Item(name: "Steak", price: 19.95)
         let marsala = Item(name: "Marsala", price: 18.95)
@@ -48,19 +50,9 @@ class ViewController: UIViewController {
         phong.addItem(item: marsala)
         phong.addItem(item: tiramisu![1])
         
-        for person in people2 {
-            person.toString()
-        }
-        
-    
-        let person1 = 18.95 + (7.95 / 2.0)
-        let person2 = 19.95 + (8.5 / 2.0)
-        let person3 = 18.95 + (8.5 / 2.0)
-        let person4 = 13.95 + (7.95 / 2.0)
-        let people = [person1 , person2, person3, person4]
-        
         for person in people {
-            bill.addSubCharge(amount: person)
+            person.toString()
+            bill.addSubCharge(amount: person.calculateTotal(), name: person.getName())
         }
         bill.readBill()
         

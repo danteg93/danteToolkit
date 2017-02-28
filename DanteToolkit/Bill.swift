@@ -19,14 +19,15 @@ class Bill {
         self.tax = tax
         self.tip = tip
         self.subTotal = subTotal
-        addSubCharge(amount: subTotal)
+        addSubCharge(amount: subTotal, name: "Remainder")
     }
     
-    public func addSubCharge(amount: Double) {
+    public func addSubCharge(amount: Double, name: String) {
         if subCharges.count > 0 {
             subCharges.removeLast()
         }
         let tempSubCharge = SubCharge(subAmount: amount, totalAmount: self.subTotal)
+        tempSubCharge.nameOfCharge = name
         subCharges.append(tempSubCharge)
         leftOverAmount = subTotal - calculateSubChargesAmount()
         if  leftOverAmount <= 0.0 {
@@ -54,7 +55,7 @@ class Bill {
         var subChargeCount = 1
         var calculatedGT = 0.0
         for sub in subCharges {
-            print("=========== SubCharge \(subChargeCount) ===========")
+            print("=========== \(sub.nameOfCharge!) ===========")
             print("Amount: \(sub.getMonetaryAmount())")
             let taxShare = sub.calculateShare(percentage: tax.getPercent())
             let tipShare = sub.calculateShare(percentage: tip.getPercent())
@@ -62,7 +63,7 @@ class Bill {
             print("Tip Share: \(tipShare)")
             var grandTotalShare = sub.getMonetaryAmount() + taxShare + tipShare
             grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.mathSigFigs)
-            print("GrandTotal Share: \(grandTotalShare)")
+            print("GrandTotal Share: \(grandTotalShare.roundTo(sigFigs: 2))")
             calculatedGT +=  grandTotalShare
             subChargeCount += 1
         }
@@ -71,8 +72,7 @@ class Bill {
         print("Tax:        \(tax.printableTotalAmount()) (\(tax.printablePercent()))")
         print("Tip:        \(tip.printableTotalAmount()) (\(tip.printablePercent()))")
         print("GrandTotal: \(getGrandTotal())")
-        print("Calculated Grand Total: \(calculatedGT)")
-        print(22.20467.roundTo(sigFigs: 2))
+        print("Calculated Grand Total: \(calculatedGT.roundTo(sigFigs: CalcSettings.mathSigFigs))")
         print("====================================")
     }
 }
