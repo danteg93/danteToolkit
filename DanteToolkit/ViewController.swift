@@ -36,6 +36,15 @@ class ViewController: UIViewController {
             bill.addSubCharge(amount: person)
         }
         bill.readBill()
+        
+        let item1 = Item(name: "Cheese Cake", price: 7.95)
+        item1.splitItem(parts: 2)
+        print("=========================================")
+        let item2 = Item(name: "Triple Layer Cake", price: 3.01)
+        item2.splitItem(parts: 3)
+        print("=========================================")
+        let item3 = Item(name: "Double Layer Cake", price: 3.02)
+        item3.splitItem(parts: 9)
     }
     
 
