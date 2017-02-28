@@ -23,9 +23,7 @@ class ViewController: UIViewController {
     private func lmfao() {
         let subTotal = 88.25
         let tax = SubCharge(subAmount: 6.84, totalAmount: subTotal)
-        print("Tax: \(tax.percentOfTotal)")
         let tip = SubCharge(subAmount: 14.26, totalAmount: subTotal)
-        print("Tip: \(tip.percentOfTotal)")
         let bill = Bill(subTotal: subTotal, tax: tax, tip: tip)
         
         let person1 = 18.95 + (7.95 / 2.0)

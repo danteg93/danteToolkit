@@ -56,8 +56,8 @@ class Bill {
         for sub in subCharges {
             print("=========== SubCharge \(subChargeCount) ===========")
             print("Amount: \(sub.printableTotalAmount())")
-            let taxShare = sub.getMonetaryAmount() * tax.getPercent()
-            let tipShare = sub.getMonetaryAmount() * tip.getPercent()
+            let taxShare = sub.calculateShare(percentage: tax.getPercent())
+            let tipShare = sub.calculateShare(percentage: tip.getPercent())
             print("Tax Share: \(taxShare)")
             print("Tip Share: \(tipShare)")
             var grandTotalShare = sub.getMonetaryAmount() + taxShare + tipShare
