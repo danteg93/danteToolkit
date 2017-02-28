@@ -55,14 +55,13 @@ class Bill {
         var calculatedGT = 0.0
         for sub in subCharges {
             print("=========== SubCharge \(subChargeCount) ===========")
-            print("Amount: \(sub.printableTotalAmount())")
+            print("Amount: \(sub.getMonetaryAmount())")
             let taxShare = sub.calculateShare(percentage: tax.getPercent())
             let tipShare = sub.calculateShare(percentage: tip.getPercent())
             print("Tax Share: \(taxShare)")
             print("Tip Share: \(tipShare)")
             var grandTotalShare = sub.getMonetaryAmount() + taxShare + tipShare
-            print("GrandTotal WTF: \(grandTotalShare)")
-            grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.printSigFigs)
+            grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.sigFigs)
             print("GrandTotal Share: \(grandTotalShare)")
             calculatedGT +=  grandTotalShare
             subChargeCount += 1
