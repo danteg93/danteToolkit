@@ -9,5 +9,9 @@
 import Foundation
 
 class Bill2 {
+    public private(set) var name = "Bill"
+    public private(set) var subTotal = 0.0
+    private var items: [Item2] = []
+    
     
 }

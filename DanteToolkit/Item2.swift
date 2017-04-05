@@ -22,4 +22,8 @@ class Item2 {
     public func assignOwner(newOwner: Person2) {
         self.itemOwner = newOwner
     }
+    
+    public func getValue() -> Double {
+        return value
+    }
 }
