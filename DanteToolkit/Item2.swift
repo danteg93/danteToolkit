@@ -10,17 +10,25 @@ import Foundation
 
 class Item2 {
     
-    private var name: String
-    private var value: Double
-    private var itemOwner: Person2?
+    static var idCount = 0
     
-    init(name: String, value: Double) {
-        self.name = name
+    public var name: String = "Item"
+    private var id: Int
+    private var value: Double
+    public private(set) var ownerId: Int?
+    
+    init(value: Double) {
+        self.id = Item2.idCount
+        Item2.idCount += 1
         self.value = value
     }
     
-    public func assignOwner(newOwner: Person2) {
-        self.itemOwner = newOwner
+    public func setOwnerId(id: Int) {
+        ownerId = id
+    }
+    
+    public func getId() -> Int {
+        return self.id
     }
     
     public func getValue() -> Double {
