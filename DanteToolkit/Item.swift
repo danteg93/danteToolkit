@@ -17,6 +17,10 @@ class Item {
         self.price = price.roundTo(sigFigs: CalcSettings.moneySigFigs)
     }
     
+    public func getPrice() -> Double {
+        return price.roundTo(sigFigs: CalcSettings.moneySigFigs)
+    }
+    
     public func splitItem(parts: Int) -> [Item]? {
         if parts <= 1 {
             return nil
@@ -34,7 +38,7 @@ class Item {
         var extraMoneyPool = abs(leftOverAmount).roundTo(sigFigs: CalcSettings.moneySigFigs)
         var newItems:[Item] = []
         for i in 1 ... parts {
-            let newName = "\(self.name) part \(i)"
+            let newName = "\(self.name) Part \(i)"
             var extraAmount = 0.0
             if extraMoneyPool > 0.0 {
                 extraAmount = 0.01 * extraPennySign
@@ -45,6 +49,12 @@ class Item {
             newItems.append(tempItem)
         }
         return newItems
+    }
+    
+    public func toString() -> String {
+        var message = "Name: \(name) ------ "
+        message += "$\(price)"
+        return message
     }
     
 }

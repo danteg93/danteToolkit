@@ -9,11 +9,12 @@
 import Foundation
 
 class SubCharge {
+    
+    public var nameOfCharge: String?
+    
     private var monetaryAmount: Double
     private var grandTotalAmount: Double
     private var percentOfTotal: Double
-    private var nameOfCharge: String?
-    
     private let mathSigFigs = CalcSettings.mathSigFigs
     private let moneySigFigs = CalcSettings.moneySigFigs
 
