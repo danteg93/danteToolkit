@@ -34,6 +34,7 @@ class Bill {
             return
         }
         let leftOverSubCharge = SubCharge(subAmount: leftOverAmount, totalAmount: self.subTotal)
+        leftOverSubCharge.nameOfCharge = "Left Over Stuff"
         subCharges.append(leftOverSubCharge)
     }
     
