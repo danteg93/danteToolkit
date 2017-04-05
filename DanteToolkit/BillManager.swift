@@ -18,8 +18,9 @@ class BillManager  {
         self.people = people
     }
     
-    private func calculateCharges() {
+    public func calculateCharges() {
         if !validateBill().validated {
+            print("ERROR VALIDATING BILL")
             return
         }
         for person in people {

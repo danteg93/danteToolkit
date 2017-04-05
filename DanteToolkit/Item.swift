@@ -15,7 +15,11 @@ class Item {
     public var name: String = "Item"
     private var id: Int
     private var value: Double
-    public private(set) var ownerId: Int?
+    public private(set) var ownerId: Int? {
+        didSet {
+            print("Setting Owner id to \(ownerId)")
+        }
+    }
     
     init(value: Double) {
         self.id = Item.idCount

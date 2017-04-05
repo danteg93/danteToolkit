@@ -39,6 +39,11 @@ class Person {
         return self.id
     }
     
+    public func addItem(item: Item) {
+        item.setOwnerId(id: self.id)
+        self.items.append(item)
+    }
+    
     public func getAmountOwed() -> Double {
         var amount = 0.0
         for item in items {
