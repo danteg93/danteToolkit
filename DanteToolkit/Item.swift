@@ -2,59 +2,36 @@
 //  Item.swift
 //  DanteToolkit
 //
-//  Created by DANTE GARCIA RAMIREZ on 2/27/17.
+//  Created by DANTE GARCIA RAMIREZ on 4/4/17.
 //  Copyright © 2017 Dante Studios. All rights reserved.
 //
 
 import Foundation
 
 class Item {
-    public var name: String
-    public var price: Double
     
-    init(name: String, price: Double) {
-        self.name = name
-        self.price = price.roundTo(sigFigs: CalcSettings.moneySigFigs)
+    static var idCount = 0
+    
+    public var name: String = "Item"
+    private var id: Int
+    private var value: Double
+    public private(set) var ownerId: Int?
+    
+    init(value: Double) {
+        self.id = Item.idCount
+        Item.idCount += 1
+        self.value = value
     }
     
-    public func getPrice() -> Double {
-        return price.roundTo(sigFigs: CalcSettings.moneySigFigs)
+    public func setOwnerId(id: Int) {
+        ownerId = id
     }
     
-    public func splitItem(parts: Int) -> [Item]? {
-        if parts <= 1 {
-            return nil
-        }
-        let splitAmount = (price / Double(parts)).roundTo(sigFigs: CalcSettings.moneySigFigs)
-        var splitPartsTotal = 0.0
-        for _ in 1 ... parts {
-            splitPartsTotal += splitAmount
-        }
-        var leftOverAmount = 0.0
-        if splitPartsTotal != price {
-            leftOverAmount = price - splitPartsTotal
-        }
-        let extraPennySign = leftOverAmount / abs(leftOverAmount)
-        var extraMoneyPool = abs(leftOverAmount).roundTo(sigFigs: CalcSettings.moneySigFigs)
-        var newItems:[Item] = []
-        for i in 1 ... parts {
-            let newName = "\(self.name) Part \(i)"
-            var extraAmount = 0.0
-            if extraMoneyPool > 0.0 {
-                extraAmount = 0.01 * extraPennySign
-                extraMoneyPool -= 0.01
-            }
-            let newAmount = splitAmount + extraAmount
-            let tempItem = Item(name: newName, price: newAmount)
-            newItems.append(tempItem)
-        }
-        return newItems
+    public func getId() -> Int {
+        return self.id
     }
     
-    public func toString() -> String {
-        var message = "Name: \(name) ------ "
-        message += "$\(price)"
-        return message
+    public func getValue() -> Double {
+        return value
     }
-    
 }

@@ -2,78 +2,57 @@
 //  Bill.swift
 //  DanteToolkit
 //
-//  Created by DANTE GARCIA RAMIREZ on 2/27/17.
+//  Created by DANTE GARCIA RAMIREZ on 4/4/17.
 //  Copyright © 2017 Dante Studios. All rights reserved.
 //
 
 import Foundation
 
 class Bill {
-    private var tip: SubCharge
-    private var tax: SubCharge
-    private var subTotal: Double
-    private var subCharges: [SubCharge] = []
-    private var leftOverAmount = 0.0
     
-    init(subTotal: Double, tax: SubCharge, tip: SubCharge) {
-        self.tax = tax
-        self.tip = tip
-        self.subTotal = subTotal
-        addSubCharge(amount: subTotal, name: "Remainder")
+    public private(set) var name = "Bill"
+    public private(set) var primaryItems: [Item] = []
+    public private(set) var superItems: [Item] = []
+    
+    public func addPrimaryItem(item: Item) {
+        primaryItems.append(item)
     }
     
-    public func addSubCharge(amount: Double, name: String) {
-        if subCharges.count > 0 {
-            subCharges.removeLast()
-        }
-        let tempSubCharge = SubCharge(subAmount: amount, totalAmount: self.subTotal)
-        tempSubCharge.nameOfCharge = name
-        subCharges.append(tempSubCharge)
-        leftOverAmount = subTotal - calculateSubChargesAmount()
-        if  leftOverAmount <= 0.0 {
+    public func removePrimaryItem(itemIndex: Int) {
+        if itemIndex >= primaryItems.count {
             return
         }
-        let leftOverSubCharge = SubCharge(subAmount: leftOverAmount, totalAmount: self.subTotal)
-        leftOverSubCharge.nameOfCharge = "Left Over"
-        subCharges.append(leftOverSubCharge)
+        primaryItems.remove(at: itemIndex)
     }
     
-    private func calculateSubChargesAmount() -> Double {
-        var subTotal = 0.0
-        for subCharge in subCharges {
-            subTotal += subCharge.getMonetaryAmount()
+    public func addSuperItem(item: Item) {
+        superItems.append(item)
+    }
+    
+    public func removeSuperItem(itemIndex: Int) {
+        if itemIndex >= superItems.count {
+            return
         }
-        return subTotal
+        superItems.remove(at: itemIndex)
     }
     
-    public func getGrandTotal() -> Double {
-        let grandTotal = calculateSubChargesAmount() + tax.getMonetaryAmount() + tip.getMonetaryAmount()
-        return grandTotal.roundTo(sigFigs: CalcSettings.mathSigFigs)
-    }
-    
-    public func readBill() {
-        print("Currently, there are \(subCharges.count) subcharges")
-        var subChargeCount = 1
-        var calculatedGT = 0.0
-        for sub in subCharges {
-            print("=========== \(sub.nameOfCharge!) ===========")
-            print("Amount: \(sub.getMonetaryAmount())")
-            let taxShare = sub.calculateShare(percentage: tax.getPercent())
-            let tipShare = sub.calculateShare(percentage: tip.getPercent())
-            print("Tax Share: \(taxShare)")
-            print("Tip Share: \(tipShare)")
-            var grandTotalShare = sub.getMonetaryAmount() + taxShare + tipShare
-            grandTotalShare = grandTotalShare.roundTo(sigFigs: CalcSettings.mathSigFigs)
-            print("GrandTotal Share: \(grandTotalShare.roundTo(sigFigs: 2))")
-            calculatedGT +=  grandTotalShare
-            subChargeCount += 1
+    public func getSubTotal() -> Double {
+        var total = 0.0
+        for item in primaryItems {
+            total += item.getValue()
         }
-        print("====================================")
-        print("Subtotal:   \(calculateSubChargesAmount())")
-        print("Tax:        \(tax.printableTotalAmount()) (\(tax.printablePercent()))")
-        print("Tip:        \(tip.printableTotalAmount()) (\(tip.printablePercent()))")
-        print("GrandTotal: \(getGrandTotal())")
-        print("Calculated Grand Total: \(calculatedGT.roundTo(sigFigs: CalcSettings.mathSigFigs))")
-        print("====================================")
+        return total
+    }
+    
+    public func getSuperItemsTotal() -> Double {
+        var total = 0.0
+        for item in superItems {
+            total += item.getValue()
+        }
+        return total
+    }
+    
+    public func getTotal() -> Double {
+        return getSubTotal() + getSuperItemsTotal()
     }
 }

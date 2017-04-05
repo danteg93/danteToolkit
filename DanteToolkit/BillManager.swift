@@ -10,21 +10,27 @@ import Foundation
 
 class BillManager  {
     
-    private var bill:Bill2
-    private var people: [Person2]
+    private var bill:Bill
+    private var people: [Person]
     
-    init(bill: Bill2, people: [Person2]) {
+    init(bill: Bill, people: [Person]) {
         self.bill = bill
         self.people = people
     }
     
     private func calculateCharges() {
+        if !validateBill().validated {
+            return
+        }
         for person in people {
-            
+            let amountOfSubtotal = person.getAmountOwed()
+            //let subTotal = bill.
+            print("\(amountOfSubtotal)")
+            //TODO get what ratio of total they subtotal they owe. Then use that to calculate how much of the total they owe
         }
     }
     
-    private func validateBill() -> (Bool, Int) {
+    private func validateBill() -> (validated: Bool, unownedItem: Int) {
         for item in bill.primaryItems {
             if item.ownerId == nil {
                 return (false, item.getId())

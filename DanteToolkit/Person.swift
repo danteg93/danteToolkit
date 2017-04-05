@@ -2,57 +2,48 @@
 //  Person.swift
 //  DanteToolkit
 //
-//  Created by DANTE GARCIA RAMIREZ on 2/27/17.
+//  Created by DANTE GARCIA RAMIREZ on 4/4/17.
 //  Copyright © 2017 Dante Studios. All rights reserved.
 //
 
 import Foundation
 
 class Person {
-    private var name: String
-    private var items: [Item] = []
+    
+    static var idCount = 0
+    
+    public var name = "Person"
+    private var id: Int
+    public private(set) var items: [Item] = []
+    
+    init() {
+        self.id = Person.idCount
+        Person.idCount += 1
+    }
     
     init(name: String) {
+        self.id = Person.idCount
+        Person.idCount += 1
+        self.name = name
+    }
+    
+    public func changeName(newName name: String) {
         self.name = name
     }
     
     public func getName() -> String {
-        return name
+        return self.name
     }
     
-    public func changeName(newName: String) {
-        self.name = newName
+    public func getId() -> Int {
+        return self.id
     }
     
-    public func addItem(itemName: String, itemPrice: Double) {
-        let item = Item(name: itemName, price: itemPrice)
-        items.append(item)
-    }
-    
-    public func addItem(item: Item) {
-        items.append(item)
-    }
-    
-    public func calculateTotal() -> Double {
-        var total = 0.0
+    public func getAmountOwed() -> Double {
+        var amount = 0.0
         for item in items {
-            total += item.price
+            amount += item.getValue()
         }
-        return total.roundTo(sigFigs: CalcSettings.moneySigFigs)
-    }
-    
-    public func toString() {
-        print("===============")
-        print("Name: \(name)")
-        print("Items:")
-        if items.count <= 0 {
-            print("\tNo items")
-        } else {
-            for item in items {
-                print("\t\(item.toString())")
-            }
-        }
-        print("Total: \(calculateTotal())")
-        print("===============")
+        return amount
     }
 }
