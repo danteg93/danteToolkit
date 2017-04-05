@@ -24,9 +24,10 @@ class BillManager  {
         }
         for person in people {
             let amountOfSubtotal = person.getAmountOwed()
-            //let subTotal = bill.
-            print("\(amountOfSubtotal)")
-            //TODO get what ratio of total they subtotal they owe. Then use that to calculate how much of the total they owe
+            let subTotal = bill.getSubTotal()
+            let ratioOwed = amountOfSubtotal / subTotal
+            let totalOwed = bill.getTotal() * ratioOwed
+            print("\(person.getName()) ownes: \(totalOwed)")
         }
     }
     
