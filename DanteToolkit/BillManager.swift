@@ -41,4 +41,32 @@ class BillManager  {
         return (true, -1)
     }
     
+    public func splitItem(item: Item, inParts parts: Int) -> [Item]? {
+//        if !billHasItem(item) { return nil }
+//        if let owner = itemHasOwner(item) {
+//            owner
+//        }
+        return nil
+    }
+    
+    private func billHasItem(_ item: Item) -> Bool {
+        for _item in bill.primaryItems {
+            if item.getId() == _item.getId() {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func itemHasOwner(_ item: Item) -> Person? {
+        for person in people {
+            for _item in person.items {
+                if _item.getId() == item.getId() {
+                    return person
+                }
+            }
+        }
+        return nil
+    }
+    
 }
