@@ -49,6 +49,9 @@ class BillManager  {
         if !billHasItem(item) {
             print("BILL D.N.C.I.")
             return nil
+        } else {
+            //TODO figure out why this isnt working
+            bill.removeSuperItem(item: item)
         }
         if let owner = itemHasOwner(item) {
             print("Removing owner tbh")
@@ -106,35 +109,4 @@ class BillManager  {
         }
         return tempItems
     }
-    /*
-    public func splitItem(parts: Int) -> [Item]? {
-        if parts <= 1 {
-            return nil
-        }
-        let splitAmount = (price / Double(parts)).roundTo(sigFigs: CalcSettings.moneySigFigs)
-        var splitPartsTotal = 0.0
-        for _ in 1 ... parts {
-            splitPartsTotal += splitAmount
-        }
-        var leftOverAmount = 0.0
-        if splitPartsTotal != price {
-            leftOverAmount = price - splitPartsTotal
-        }
-        let extraPennySign = leftOverAmount / abs(leftOverAmount)
-        var extraMoneyPool = abs(leftOverAmount).roundTo(sigFigs: CalcSettings.moneySigFigs)
-        var newItems:[Item] = []
-        for i in 1 ... parts {
-            let newName = "\(self.name) part \(i)"
-            var extraAmount = 0.0
-            if extraMoneyPool > 0.0 {
-                extraAmount = 0.01 * extraPennySign
-                extraMoneyPool -= 0.01
-            }
-            let newAmount = splitAmount + extraAmount
-            let tempItem = Item(name: newName, price: newAmount)
-            newItems.append(tempItem)
-        }
-        return newItems
-    }
- */
 }

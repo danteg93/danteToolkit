@@ -29,11 +29,16 @@ class Bill {
         superItems.append(item)
     }
     
-    public func removeSuperItem(itemIndex: Int) {
-        if itemIndex >= superItems.count {
-            return
+    public func removeSuperItem(item: Item) {
+        var index = 0
+        for _item in superItems {
+            if _item.getId() == item.getId() {
+                item.removeOwner()
+                superItems.remove(at: index)
+                return
+            }
+            index += 1
         }
-        superItems.remove(at: itemIndex)
     }
     
     public func getSubTotal() -> Double {
