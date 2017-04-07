@@ -69,6 +69,18 @@ class BillManager  {
         }
         return nil
     }
+    public func lol(item: Item, parts: Int) -> [Item]? {
+        let splitAmount = (item.getValue() / Double(parts))
+        var splitPartsTotal = 0.0
+        var leftOverAmount = 0.0
+        for _ in 1 ... parts {
+            splitPartsTotal += splitAmount
+        }
+        if splitPartsTotal != item.getValue() {
+            leftOverAmount = item.getValue() - splitPartsTotal
+        }
+        //let extraPennySign = leftOverAmount / abs(leftOverAmount)
+    }
     /*
     public func splitItem(parts: Int) -> [Item]? {
         if parts <= 1 {
