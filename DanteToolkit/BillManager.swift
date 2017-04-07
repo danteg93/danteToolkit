@@ -47,7 +47,7 @@ class BillManager  {
         if let owner = itemHasOwner(item) {
             owner.removeItem(item: item)
         }
-        return nil
+        return determineSplitItems(item: item, parts: parts)
     }
     
     private func billHasItem(_ item: Item) -> Bool {
@@ -69,17 +69,35 @@ class BillManager  {
         }
         return nil
     }
-    public func lol(item: Item, parts: Int) -> [Item]? {
-        let splitAmount = (item.getValue() / Double(parts))
-        var splitPartsTotal = 0.0
+    private func determineSplitItems(item: Item, parts: Int) -> [Item] {
+        let splitAmount = (item.getValue() / Double(parts)).roundTo(sigFigs: 2)
+        let splitPartsTotal = splitAmount * Double(parts)
         var leftOverAmount = 0.0
-        for _ in 1 ... parts {
-            splitPartsTotal += splitAmount
-        }
         if splitPartsTotal != item.getValue() {
             leftOverAmount = item.getValue() - splitPartsTotal
         }
-        //let extraPennySign = leftOverAmount / abs(leftOverAmount)
+        if leftOverAmount == 0.0 {
+            var tempItems:[Item] = []
+            for _ in 1 ... parts {
+                let item = Item(value: splitAmount)
+                tempItems.append(item)
+            }
+            return tempItems
+        }
+        let extraPennySign = leftOverAmount / abs(leftOverAmount)
+        var extraMoneyPool = abs(leftOverAmount).roundTo(sigFigs: 2)
+        var tempItems:[Item] = []
+        for _ in 1 ... parts {
+            var extraAmount = 0.0
+            if extraMoneyPool > 0.0 {
+                extraAmount = 0.01 * extraPennySign
+                extraMoneyPool -= 0.01
+            }
+            let newAmount = splitAmount + extraAmount
+            let tempItem = Item(value: newAmount)
+            tempItems.append(tempItem)
+        }
+        return tempItems
     }
     /*
     public func splitItem(parts: Int) -> [Item]? {
