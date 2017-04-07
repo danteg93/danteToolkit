@@ -42,9 +42,16 @@ class BillManager  {
     }
     
     public func splitItem(item: Item, inParts parts: Int) -> [Item]? {
-        if parts <= 1 { return nil }
-        if !billHasItem(item) { return nil }
+        if parts <= 1 {
+            print("splitItem parts < 1")
+            return nil
+        }
+        if !billHasItem(item) {
+            print("BILL D.N.C.I.")
+            return nil
+        }
         if let owner = itemHasOwner(item) {
+            print("Removing owner tbh")
             owner.removeItem(item: item)
         }
         return determineSplitItems(item: item, parts: parts)
