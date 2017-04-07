@@ -44,6 +44,18 @@ class Person {
         self.items.append(item)
     }
     
+    public func removeItem(item: Item) {
+        var index = 0
+        for _item in items {
+            if _item.getId() == item.getId() {
+                item.removeOwner()
+                items.remove(at: index)
+                return
+            }
+            index += 1
+        }
+    }
+    
     public func getAmountOwed() -> Double {
         var amount = 0.0
         for item in items {

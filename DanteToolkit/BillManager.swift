@@ -42,10 +42,11 @@ class BillManager  {
     }
     
     public func splitItem(item: Item, inParts parts: Int) -> [Item]? {
-//        if !billHasItem(item) { return nil }
-//        if let owner = itemHasOwner(item) {
-//            owner
-//        }
+        if parts <= 1 { return nil }
+        if !billHasItem(item) { return nil }
+        if let owner = itemHasOwner(item) {
+            owner.removeItem(item: item)
+        }
         return nil
     }
     
@@ -68,5 +69,35 @@ class BillManager  {
         }
         return nil
     }
-    
+    /*
+    public func splitItem(parts: Int) -> [Item]? {
+        if parts <= 1 {
+            return nil
+        }
+        let splitAmount = (price / Double(parts)).roundTo(sigFigs: CalcSettings.moneySigFigs)
+        var splitPartsTotal = 0.0
+        for _ in 1 ... parts {
+            splitPartsTotal += splitAmount
+        }
+        var leftOverAmount = 0.0
+        if splitPartsTotal != price {
+            leftOverAmount = price - splitPartsTotal
+        }
+        let extraPennySign = leftOverAmount / abs(leftOverAmount)
+        var extraMoneyPool = abs(leftOverAmount).roundTo(sigFigs: CalcSettings.moneySigFigs)
+        var newItems:[Item] = []
+        for i in 1 ... parts {
+            let newName = "\(self.name) part \(i)"
+            var extraAmount = 0.0
+            if extraMoneyPool > 0.0 {
+                extraAmount = 0.01 * extraPennySign
+                extraMoneyPool -= 0.01
+            }
+            let newAmount = splitAmount + extraAmount
+            let tempItem = Item(name: newName, price: newAmount)
+            newItems.append(tempItem)
+        }
+        return newItems
+    }
+ */
 }
