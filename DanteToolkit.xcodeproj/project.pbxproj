@@ -11,6 +11,7 @@
 		44AF21481E948C1200010802 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF21471E948C1200010802 /* Person.swift */; };
 		44AF214A1E948C1E00010802 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF21491E948C1E00010802 /* Item.swift */; };
 		44AF214C1E94940900010802 /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF214B1E94940900010802 /* BillManager.swift */; };
+		44D895871E9744F1000CB2A6 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D895861E9744F1000CB2A6 /* CustomExtensions.swift */; };
 		44EBD0891E64E8C100E84ECE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EBD0881E64E8C100E84ECE /* AppDelegate.swift */; };
 		44EBD08B1E64E8C100E84ECE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EBD08A1E64E8C100E84ECE /* ViewController.swift */; };
 		44EBD08E1E64E8C100E84ECE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EBD08C1E64E8C100E84ECE /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		44AF21471E948C1200010802 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		44AF21491E948C1E00010802 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		44AF214B1E94940900010802 /* BillManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
+		44D895861E9744F1000CB2A6 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		44EBD0851E64E8C100E84ECE /* DanteToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanteToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EBD0881E64E8C100E84ECE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44EBD08A1E64E8C100E84ECE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44D895881E9744F8000CB2A6 /* SupportModels */ = {
+			isa = PBXGroup;
+			children = (
+				44D895861E9744F1000CB2A6 /* CustomExtensions.swift */,
+			);
+			name = SupportModels;
+			sourceTree = "<group>";
+		};
 		44EBD07C1E64E8C100E84ECE = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		44EBD0A91E64EA0200E84ECE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				44D895881E9744F8000CB2A6 /* SupportModels */,
 				44AF21451E948BFD00010802 /* Bill.swift */,
 				44AF21471E948C1200010802 /* Person.swift */,
 				44AF21491E948C1E00010802 /* Item.swift */,
@@ -229,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D895871E9744F1000CB2A6 /* CustomExtensions.swift in Sources */,
 				44EBD08B1E64E8C100E84ECE /* ViewController.swift in Sources */,
 				44AF21481E948C1200010802 /* Person.swift in Sources */,
 				44AF214A1E948C1E00010802 /* Item.swift in Sources */,

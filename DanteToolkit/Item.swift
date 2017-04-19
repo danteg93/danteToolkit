@@ -17,7 +17,7 @@ class Item {
     private var value: Double
     public private(set) var ownerId: Int? {
         didSet {
-            print("Setting Owner id to \(ownerId)")
+            print("Setting Owner id to \(String(describing: ownerId))")
         }
     }
     
@@ -29,6 +29,10 @@ class Item {
     
     public func setOwnerId(id: Int) {
         ownerId = id
+    }
+    
+    public func removeOwner() {
+        ownerId = nil
     }
     
     public func getId() -> Int {
