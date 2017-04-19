@@ -18,11 +18,16 @@ class Bill {
         primaryItems.append(item)
     }
     
-    public func removePrimaryItem(itemIndex: Int) {
-        if itemIndex >= primaryItems.count {
-            return
+    public func removePrimaryItem(item: Item) {
+        var index = 0
+        for _item in primaryItems {
+            if _item.getId() == item.getId() {
+                item.removeOwner()
+                primaryItems.remove(at: index)
+                return
+            }
+            index += 1
         }
-        primaryItems.remove(at: itemIndex)
     }
     
     public func addSuperItem(item: Item) {

@@ -20,7 +20,7 @@ class BillManager  {
     
     public func calculateCharges() {
         if !validateBill().validated {
-            print("ERROR VALIDATING BILL")
+            print("ERROR VALIDATING BILL \(validateBill().unownedItem)")
             return
         }
         for person in people {
@@ -50,13 +50,16 @@ class BillManager  {
             print("BILL D.N.C.I.")
             return nil
         } else {
-            //TODO figure out why this isnt working
-            bill.removeSuperItem(item: item)
+            bill.removePrimaryItem(item: item)
         }
         if let owner = itemHasOwner(item) {
-            print("Removing owner tbh")
+            print("Removing owner tbh: \(owner.getName())")
             owner.removeItem(item: item)
         }
+        let itemsSplit = determineSplitItems(item: item, parts: parts)
+//        for itemPart in itemsSplit {
+//            bill.addPrimaryItem(item: itemPart)
+//        }
         return determineSplitItems(item: item, parts: parts)
     }
     
