@@ -22,12 +22,13 @@ class ViewController: UIViewController {
         let dante = Person(name: "Dante")
         let sally = Person(name: "Sally")
         
+        let billManager = BillManager(bill: bill, people: [dante, sally])
+        
         let tax = Item(value: 3.42)
         let tip = Item(value: 7.00)
         
         let marg = Item(value: 14.00)
-        let putin1 = Item(value: (18.0/2))
-        let putin2 = Item(value: (18.0/2))
+        let putin = Item(value: 18.0)
         let goldRush = Item(value: 12.00)
         
         
@@ -35,22 +36,13 @@ class ViewController: UIViewController {
         bill.addSuperItem(item: tip)
     
         bill.addPrimaryItem(item: marg)
-        bill.addPrimaryItem(item: putin1)
-        bill.addPrimaryItem(item: putin2)
+        bill.addPrimaryItem(item: putin)
         bill.addPrimaryItem(item: goldRush)
         
-        for item in bill.primaryItems {
-            print("\(item.name)  -  id:\(item.getId())")
-        }
-        
         dante.addItem(item: marg)
-        dante.addItem(item: putin1)
-        sally.addItem(item: putin2)
         sally.addItem(item: goldRush)
         
-        
-        let billManager = BillManager(bill: bill, people: [dante, sally])
-        let items = billManager.splitItem(item: marg, inParts: 2)
+        let items = billManager.splitItem(item: putin, inParts: 2)
         dante.addItem(item: items![0])
         sally.addItem(item: items![1])
         
